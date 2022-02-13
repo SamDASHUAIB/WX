@@ -1,0 +1,10 @@
+page {
+  /*全部页面设置底色*/
+  background-color: #f5f5f5;
+}
+
+/*
+  对于自定义组件来说
+  app.wxss 中的代码几乎无效
+  app.wxss 一般用在 page 页面
+*/

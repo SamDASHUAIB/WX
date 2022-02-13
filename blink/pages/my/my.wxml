@@ -1,0 +1,41 @@
+<view class="container">
+  <image src="/images/my/my@bg.png" class="bg"></image>
+  <!-- open-data 只读, 不能获取到, 只是显示, 不能获取到 js 文件中, 然后写入服务器 -->
+  <!-- <open-data type="userAvatarUrl" class="avatar avatar-position"/> -->
+
+  <!-- 实际上 v-button 中的 open-type 是我们自己定义的一个属性 -->
+  <!-- 实际上 v-button 上的 getuserinfo 是自定义事件  -->
+  <v-button wx:if="{{!authorized}}" open-type="getUserInfo"
+    class="avatar-position" bind:getuserinfo="onGetUserInfo">
+    <!-- 插槽, 通过插槽的形式传入图片 -->
+    <image slot="img" class="avatar" src="/images/my/my.png" />
+  </v-button>
+  <!-- 授权后, 使用用户的图片以及 nickName 代替原来的图片 -->
+  <view wx:if="{{authorized}}" class="avatar-container avatar-position">
+    <image src="{{userInfo.avatarUrl}}" class="avatar" />
+    <text>{{userInfo.nickName}}</text>
+  </view>
+  <!-- about 模块 -->
+  <view class="about-container">
+    <view bind:tap="onJumpToAbout" class="about-us">
+      <image src="/images/my/about.png" />
+      <text class="description">关于我们</text>
+    </view>
+    <view class="about-us">
+      <text class="book-num">{{bookCount}}</text>
+      <text class="description">喜欢的书</text>
+    </view>
+  </view>
+
+  <view class="like-container">
+    <image class="headline" src="/images/my/like.png" />
+    <view class="preview-container">
+      <block wx:for="{{classics}}" wx:key="">
+        <v-preview bind:tapping="onJumpToDetail" class="preview"
+          classic="{{item}}" />
+      </block>
+    </view>
+  </view>
+
+</view>
+<!-- <image bind:tap="onStudy" class="study" src="/images/my/study.png"></image> -->

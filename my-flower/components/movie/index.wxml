@@ -1,0 +1,10 @@
+<view
+    bind:tap="onGoToDetail"
+    class="container">
+  <image class="post" src="{{movie.images.large}}"></image>
+  <text class="title">{{movie.title}}</text>
+  <view class="rate-container">
+    <l-rate disabled score="{{movie.rating.stars/10}}" size="22"></l-rate>
+    <text class="score">{{movie.rating.average}}</text>
+  </view>
+</view>

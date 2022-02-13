@@ -1,0 +1,16 @@
+<view class="container">
+  <view>
+    <image src="{{}}"></image>
+  </view>
+  <view>
+    <!--    规格名+规格值-->
+    <!--    fence, 栅栏, 复杂业务组件, 名字要简单-->
+    <block wx:for="{{}}">
+      <s-fence></s-fence>
+    </block>
+  </view>
+  <view class="counter-container">
+    <!--    <l-counter></l-counter>-->
+  </view>
+  <view></view>
+</view>

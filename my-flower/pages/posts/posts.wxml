@@ -1,0 +1,34 @@
+<view>
+  <!--
+  字符串 '' 与JS表达式 {{}} 的区别
+  布尔值, 写上 {{}}
+  DOM 优先(首先要获取到 DOM 节点对象, 然后对其属性进行赋值) VS 数据优先(任何地方使用)
+   -->
+  <swiper
+      indicator-dots
+      indicator-color="#666"
+      indicator-active-color="#fff"
+      autoplay
+      interval="{{1000}}"
+      circular
+  >
+    <swiper-item>
+      <!-- 插槽 -->
+      <image data-id="3" bindtap="onGoToDetail" src="/images/bestplayers.png"></image>
+    </swiper-item>
+    <swiper-item>
+      <image data-id="0" bindtap="onGoToDetail" src="/images/lpl.png"></image>
+    </swiper-item>
+    <swiper-item>
+      <image data-id="4" bindtap="onGoToDetail" src="/images/jumpfly.png"></image>
+    </swiper-item>
+  </swiper>
+  <!--  wx:key 不要用 {{}} 而且, 不要加上 item-->
+  <block wx:for="{{postList}}" wx:key="postId">
+    <!--     data-id 自定义属性, 将数据从当前 wxml 片段传递出去-->
+    <post
+        bind:posttap="onGoToDetail"
+        post="{{item}}"
+        bind:tap="onGoToDetail"></post>
+  </block>
+</view>

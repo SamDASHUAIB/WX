@@ -1,0 +1,41 @@
+// 主价格设置
+function mainPrice(price, discountPrice) {
+  // 折扣价不存在, 只有一个原价(正常显示)
+  if (!discountPrice) {
+    return {
+      price: price,
+      display: true
+    }
+  }
+  // 折扣价存在, 将折扣价提升为 mainPrice(第一个)
+  else {
+    return {
+      price: discountPrice,
+      display: true
+    }
+
+  }
+}
+
+// 划线
+function slashedPrice(price, discountPrice) {
+  // 折扣价存在, 原价需要划线
+  if (discountPrice) {
+    return {
+      price: price,
+      display: true
+    }
+  }
+  // 折扣价不存在, 就无需划线
+  else {
+    return  {
+      display: false,
+      price: null
+    }
+  }
+}
+
+module.exports = {
+  mainPrice: mainPrice,
+  slashedPrice: slashedPrice
+}

@@ -1,0 +1,120 @@
+<!-- 引用 wxs module 属性可以给 .wxs 文件定义一个新名字 -->
+<!-- wxs 需要使用封闭标签 -->
+<wxs src="../../utils/filter.wxs" module="util" />
+<view class="container">
+  <view class="head">
+    <image src="{{book.image}}"></image>
+    <text class="title">{{book.title}}</text>
+    <text class="author">{{book.author}}</text>
+  </view>
+  <!-- 短评 -->
+  <view class="sub-container">
+    <text class="headline">短评</text>
+    <view class="comment-container">
+      <!-- index 只有在 wxml 中才能获取到, 所以不好写在 js 中, 但是可以通过 wxs -->
+      <block wx:for="{{util.limit(comments, 10)}}" wx:key="content">
+        <v-tag tag-class="{{tool.hightLight(index)}}" text="{{item.content}}">
+          <!-- 使用插槽, 组件对应的 slot 部分, 完全可以由组件的调用方 也就是页面来设定, 易于拓展, 非常灵活(数据 样式 都可以由页面来定制) -->
+          <text class="num" slot="after">{{'+'+item.nums}}</text>
+        </v-tag>
+      </block>
+    </view>
+  </view>
+  <!-- 内容简介 -->
+  <view class="sub-container">
+    <!--
+      text 组件会自动将 \n 解析成换行
+      text 组件内部不要轻易换行
+      \n  转义 => 换行符
+      \\n 转义 => 反斜杠 + 单独的 n 不是换行符
+      -->
+    <text class="headline">内容简介</text>
+    <!--
+      想要在 wxml 中编写 js 或者调用 js 函数, 不可能
+      所以 wxs 出现了, 可以编写方法, 然后再 wxml 中调用方法
+      过滤器
+      -->
+    <!--
+        formate 函数将会执行两次, 一次 初始化 data 中定义
+        一次 更新 setData 中更新
+        第一次: book 为 null 所以 book.summary 将会报错
+       -->
+    <!-- 开启 decoded 可以将 &nbsp; 解析成空格 -->
+    <text decode="{{true}}" class="content">{{util.format(book.summary)}}</text>
+  </view>
+  <!-- 书本信息 -->
+  <view class="sub-container">
+    <text class="headline">书本信息</text>
+    <view class="detail-container">
+      <view class="vertical description">
+        <text>出版社</text>
+        <text>出版年</text>
+        <text>页数</text>
+        <text>定价</text>
+        <text>装帧</text>
+      </view>
+      <view class="vertical">
+        <text>{{book.publisher}}</text>
+        <text>{{book.pubdate}}</text>
+        <text>{{book.pages}}</text>
+        <text>{{book.price}}</text>
+        <text>{{book.binding}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 短评(fake) -->
+<view class="post-container" hidden="{{posting}}">
+  <!-- 输入框 -->
+  <view bind:tap="onFakePost" class="post-fake">
+    <text>输入短评</text>
+  </view>
+  <!-- 点赞按钮, 直接复用 like 组件就 OK 了 -->
+  <view class="like-container">
+    <v-like bind:like="onLike" class="like" like="{{likeStatus}}" count="{{likeCount}}" />
+  </view>
+</view>
+
+<!-- 真正输入短评的地方 -->
+<view class="posting-container" wx:if="{{posting}}">
+  <view class="post-header">
+    <!-- comments 有数据 -->
+    <text class="shadow" wx:if="{{comments.length}}">仅可点击标签+1</text>
+    <!-- comments 为空, 压根没有短评, 给一个友好提示 -->
+    <text wx:else>还没有短评</text>
+    <!-- 取消 -->
+    <text bind:tap="onCancel" class="cancel">取消</text>
+  </view>
+
+  <view class="comment-container">
+    <!-- 将点赞数最高的3个标签, 填充到真实的输入框模块 -->
+    <block wx:for="{{util.limit(comments, 3)}}" wx:key="content">
+      <v-tag bind:tapping="onPost" tag-class="{{tool.hightLight(index)}}" text="{{item.content}}">
+        <!-- tapping 自定义事件 -->
+        <text class="num" slot="after">{{'+'+item.nums}}</text>
+      </v-tag>
+    </block>
+  </view>
+  <!-- bindconfirm 事件监听用户输入完成之后, 点击键盘上的 确认按钮 -->
+  <input bind:confirm="onPost" class="post" placeholder='短评最多12个字'></input>
+</view>
+
+<!-- 背景蒙版 -->
+<v-mask wx:if="{{posting}}" />
+
+<wxs module="tool">
+  var hightLight = function (index) {
+    if (index === 0) {
+      return 'ex-tag1'
+    }
+    if (index === 1) {
+      return 'ex-tag2'
+    }
+    return ''
+
+  }
+  module.exports = {
+    hightLight: hightLight
+  }
+</wxs>

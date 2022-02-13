@@ -1,0 +1,31 @@
+var format = function (text) {
+  // 健壮性, 空值检测
+  if (!text) {
+    return
+  }
+  // 匹配的字符串 \\n => 转义 \\\\n
+  var reg = getRegExp('\\\\n', 'g')
+  /*
+    换行符就是 \n 已经转义了, 无需再将 \n 转义成 \\n
+  */
+  return text.replace(reg, '\n&nbsp;&nbsp;&nbsp;&nbsp;')
+}
+var addExternalClass = function (index) {
+  return index === 0 ? 'ex-tag1' : '' || index === 1 ? 'ex-tag2' : ''
+}
+var limit = function (array, length) {
+  return array.slice(0, length)
+}
+module.exports = {
+  format: format,
+  addExternalClass: addExternalClass,
+  limit: limit,
+}
+/*
+  wxs
+  在 wxml 中使用 js 函数
+  过滤器
+  es5 语法
+  使用 CommonJS 导入导出
+  正则表达式, 有自己的语法
+*/

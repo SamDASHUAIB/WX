@@ -1,0 +1,6 @@
+<image class="about" />
+<!-- 内置组件, 跳转功能, app-id 要跳转到的小程序的 app-id -->
+<navigator class="nav" target="miniProgram" app-id="wx8ffc97ad5bcccc89"
+  open-type="navigate">
+  <image class="vendor" src="/images/my/vendor.png"></image>
+</navigator>

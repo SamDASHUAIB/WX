@@ -1,0 +1,60 @@
+<!--
+  组件:
+    复用, 代码分离, 低耦合, 可维护性强
+    通用性(耗时) VS 灵活(高效) 取舍
+
+    wx:if VS hidden
+    DOM 卸载 VS display: none;
+    频繁切换, hidden 开销少
+    hidden
+      自定义组件不支持, 小程序认为 hidden 属于自定义组件的普通属性(自定义属性)
+      小程序内置组件支持 view text
+
+      ** 由于没有 卸载/重新生成 DOM 所以压根不会触发生命周期函数 **
+-->
+<view class="container">
+  <view class="header">
+    <v-episode index="{{ classic.index }}" class="episode"></v-episode>
+    <!-- like_status 1 表示点赞, 0 表示取消点赞, 数字 0 自动转换为 false -->
+    <v-like
+      bind:like="onLike"
+      like="{{ likeStatus }}"
+      count="{{ likeCount }}"
+      class="like"
+    ></v-like>
+  </view>
+
+  <v-movie
+    hidden="{{ classic.type !== 100 }}"
+    img="{{ classic.image }}"
+    content="{{ classic.content }}"
+  ></v-movie>
+  <v-music
+    src="{{ classic.url }}"
+    title="{{ classic.title }}"
+    wx:if="{{ classic.type === 200 }}"
+    img="{{ classic.image }}"
+    content="{{ classic.content }}"
+  ></v-music>
+  <!-- <v-music
+    src="{{ classic.url }}"
+    title="{{ classic.title }}"
+    hidden="{{ classic.type !== 200 }}"
+    img="{{ classic.image }}"
+    content="{{ classic.content }}"
+  ></v-music> -->
+  <v-easy
+    hidden="{{ classic.type !== 300 }}"
+    img="{{ classic.image }}"
+    content="{{ classic.content }}"
+  ></v-easy>
+
+  <v-navi
+    bind:left="onNext"
+    bind:right="onPrevious"
+    title="{{ classic.title }}"
+    first="{{ first }}"
+    latest="{{ latest }}"
+    class="navi"
+  ></v-navi>
+</view>

@@ -1,0 +1,18 @@
+<!-- view 标签就是 html 中的 div 标签 -->
+<view class="container">
+  <!-- 图片的标签是 image / 代表的是根目录 推荐使用绝对路径 -->
+  <!-- <image class="user-avatar" src="/images/avatar/1.png"></image> -->
+
+  <!-- 使用自定义组件 -->
+  <l-avatar class="user-avatar" placement="bottom" open-data="{{['userAvatarUrl', 'userNickName']}}" size="200">
+  </l-avatar>
+
+  <!-- 文本的标签是 text -->
+  <text class="motto">Hello, Sam</text>
+  <!-- 按钮的标签是 button 但是不推荐使用, 有很多的问题, 很烦 -->
+  <!-- <button>开启小程序之旅</button> -->
+  <!-- bind VS catch bind 允许冒泡, catch 阻止冒泡 -->
+  <view bind:tap="onTap" class="journey-container">
+    <text class="journey">开启小程序之旅</text>
+  </view>
+</view>

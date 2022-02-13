@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "movie-list": "/components/movie-list/index",
+    "movie": "/components/movie/index"
+  },
+  "navigationBarTitleText": "光与影",
+  "navigationBarTextStyle": "white"
+}

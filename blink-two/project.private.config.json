@@ -1,0 +1,30 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/book/book",
+          "pathName": "pages/book/book",
+          "query": "",
+          "scene": 1000
+        },
+        {
+          "name": "pages/book-detail/book-detail",
+          "pathName": "pages/book-detail/book-detail",
+          "query": "bid=183",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

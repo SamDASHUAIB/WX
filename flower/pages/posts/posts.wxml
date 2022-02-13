@@ -1,0 +1,33 @@
+<!--pages/posts/posts.wxml-->
+<!-- <text>pages/posts/posts.wxml</text> -->
+<view>
+  <!-- 轮播组件(图片 文字 ...), 提供滑动的功能，不管滑动的东西是什么 -->
+  <!-- 实现固定宽高的图片，设置：swiper + image（每一个） -->
+
+  <!-- 推荐：设置布尔值的时候，都要加上双括号 -->
+  <swiper interval=" {{2000}} " indicator-dots=" {{true}} " autoplay=" {{true}} ">
+    <swiper-item>
+      <!-- 插槽 -->
+      <image data-post-id="3" bindtap="onGoToDetail" src="/images/bestplayers.png"></image>
+    </swiper-item>
+    <swiper-item>
+      <image data-post-id="0" bindtap="onGoToDetail" src="/images/lpl.png"></image>
+    </swiper-item>
+    <swiper-item>
+      <image data-post-id="4" bindtap="onGoToDetail" src="/images/jumpfly.png"></image>
+    </swiper-item>
+  </swiper>
+  <!-- 自定义组件 -->
+
+
+  <!-- 文章模块 -->
+  <!-- 使用 wx:for 遍历数组 "" 与 {{}} 中间不要使用空格！使用 item 代表集合的一项 index 表示序号 -->
+
+  <!-- block 没有具体意义, 相当于 括号, block 的作用就是包裹多个子元素, 让他们一起被遍历 -->
+  <!-- wx:key 不加双花括号，不写 item 直接写字段名 -->
+  <block wx:for="{{postList}}" wx:key="postId">
+    <!-- posts 自定义组件，一篇文章 -->
+    <!-- posttap 自定义事件, 哪里使用组件, 哪里监听自定义事件 -->
+    <posts bind:posttap="onGoToDetail" res="{{item}}"></posts>
+  </block>
+</view>

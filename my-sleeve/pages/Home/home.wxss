@@ -1,0 +1,61 @@
+/*.container {*/
+/*  background-color: #000;*/
+/*}*/
+.top-theme {
+  width: 100%;
+  height: 260rpx;
+  display: flex;
+}
+
+.swiper {
+  width: 100%;
+  height: 360rpx;
+}
+
+.activity {
+  margin-top: 20rpx;
+  width: 100%;
+  height: 310rpx;
+  display: flex;
+  /*优先在原生组件上设置边距*/
+  margin-bottom: 20rpx;
+}
+
+/*使用外部样式类*/
+/*.spu-scroll {*/
+/*  margin-top: 100rpx;*/
+/*}*/
+/*外面包裹一层 view 方案*/
+/*.spu-scroll {*/
+/*  margin-top: 100rpx;*/
+/*}*/
+.quality {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  width: 100%;
+  height: 880rpx;
+  display: flex /*消除图片的默认间距*/
+}
+
+.fashion {
+  display: flex;
+  width: 100%;
+  height: 840rpx;
+  margin-top: 20rpx;
+}
+
+/* 点击态: 动画, 告诉用户已经点击 */
+.title-spu-bottom {
+  width: 690rpx;
+  height: 70rpx;
+  margin-bottom: 38rpx;
+}
+
+.spu-bottom {
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30rpx;
+  background-color: #ffffff;
+}

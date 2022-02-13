@@ -1,0 +1,9 @@
+<!--components/classic/essay/index.wxml-->
+<!-- <text>components/classic/essay/index.wxml</text> -->
+<view hidden="{{hidden}}" class="classic-container">
+  <!-- 大图, 需要从服务器中取到 -->
+  <image class="classic-img" src="{{img}}"></image>
+  <!-- type 图, 固定 -->
+  <image class="tag" src="./images/essay@tag.png"></image>
+  <text class="content">{{content}}</text>
+</view>

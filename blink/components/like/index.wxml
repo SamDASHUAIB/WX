@@ -1,0 +1,6 @@
+<!-- catch VS bind catch 阻止冒泡 bind 允许冒泡 -->
+<!-- 将 tap 放在最外层的 view 中, 扩大可以 tap 的面积, 可以改善用户体验 -->
+<view bind:tap="onLike" class="container">
+  <image src="{{like? yesSrc : noSrc}}"></image>
+  <text>{{count}}</text>
+</view>

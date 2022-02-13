@@ -1,0 +1,37 @@
+<!--components/post/index.wxml-->
+<!-- <text>components/post/index.wxml</text>
+{{res}}
+{{res.title}} -->
+<!-- data- 自定义属性，使用横线 - js 中转成了驼峰形式 -->
+<!-- data-post-id="{{res.postId}}" -->
+<view bindtap="onTap" class="post-container">
+  <!-- 第一行 -->
+  <view class="post-author-date">
+    <image class="post-author" src=" {{res.avatar}} "></image>
+    <text class="post-date"> {{res.date}} </text>
+
+    {{index}}
+  </view>
+  <!-- 第二行 -->
+  <text class="post-title"> {{res.title}} </text>
+  <!-- 第三行 -->
+  <image class="post-image" src=" {{res.imgSrc}} "></image>
+  <!-- 第四行 -->
+  <text class="post-content">
+    {{res.content}}
+  </text>
+  <!-- 第五行 -->
+  <view class="post-like">
+    <!-- <image class="post-like-image" src="/images/icon/chat.png"></image> -->
+    <l-icon class="post-like-image" color="#666" size="32" name="favor"></l-icon>
+    <text class="post-like-font"> {{res.collection}} </text>
+    <!-- <image  class="post-like-image" src="/images/icon/view.png"></image> -->
+    <l-icon class="post-like-image" color="#666" size="32" name="eye"></l-icon>
+    <text class="post-like-font"> {{res.reading}} </text>
+  </view>
+
+  <!-- 使用 Lin UI 中的 icon -->
+  <!-- <l-icon size="128"  color="#342378" name="cart"></l-icon>
+    <l-icon name="research"></l-icon> -->
+
+</view>

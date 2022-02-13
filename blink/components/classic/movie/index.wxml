@@ -1,0 +1,10 @@
+<!--components/classic/movie/movie.wxml-->
+<!-- <text>components/classic/movie/movie.wxml</text> -->
+<view hidden="{{hidden}}" class="classic-container">
+  <!-- 大图, 需要从服务器中取到 -->
+  <image class="classic-img" src="{{img}}"></image>
+  <!-- type 图, 固定，组件本地数据，无需外部传 -->
+  <image class="tag" src="./images/movie@tag.png"></image>
+  <!-- content 需要从服务器获取 -->
+  <text class="content">{{content}}</text>
+</view>

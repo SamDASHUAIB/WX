@@ -1,0 +1,36 @@
+.container {
+  height: 320rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  /*设置 bgc 重叠, 父页面的 bgc*/
+  background-color: #ffffff;
+}
+
+.inner-container {
+  width: 730rpx;
+  height: 300rpx;
+  border: 1px dashed #DCEBE6;
+}
+
+.grid-item {
+  /* 不要固定高度, 高度自适应 */
+  /* 但是要设置宽度, 可以扩大用户 tap 范围, 改善用户体验 */
+  width: 200rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.img {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.text {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  color: #333333;
+}

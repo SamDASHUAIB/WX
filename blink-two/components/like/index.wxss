@@ -1,0 +1,22 @@
+.container {
+  display: inline-flex;
+  flex-direction: row;
+  padding: 10px;
+  width: 90rpx;
+}
+.container image {
+  /* iPhone 6 750*1334 两倍的关系 1px : 2rpx */
+  /* rpx 自适应, 绝大多数 */
+  /* border 使用 px */
+  width: 32rpx;
+  height: 28rpx;
+}
+.container text {
+  /* 消除文字上下的空白, fz === lh */
+  font-size: 24rpx;
+  line-height: 24rpx;
+  position: relative;
+  bottom: 10rpx;
+  left: 6rpx;
+  color: #bbb;
+}

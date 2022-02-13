@@ -1,0 +1,24 @@
+<view wx:if="{{!searching}}" class="container">
+  <view class="header">
+    <view class='box' bind:tap="onSearching">
+      <image src="/images/icon/search.png" />
+      <text>搜索书籍</text>
+    </view>
+  </view>
+  <view class="sub-container">
+    <image class="head-img" src="/images/book/quality.png" />
+    <view class="books-container">
+      <!--
+        wx:key 不要使用 {{}} 不要添加 item 直接写 item 里面的属性名 例如: id 其实就相当于 item.id
+
+        Object 不重复 数字或者字符串
+      -->
+      <block wx:key="id" wx:for="{{books}}">
+        <v-book showLike="{{true}}" book="{{item}}" />
+      </block>
+    </view>
+  </view>
+</view>
+
+<!-- 搜索组件, 写在 book 页面中, 可以使用 onReachBottom 做分页，more 就是下拉到底的标记 -->
+<v-search more="{{more}}" bind:cancel="onCancel" wx:if="{{searching}}"></v-search>

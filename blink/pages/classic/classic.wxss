@@ -1,0 +1,52 @@
+.container {
+  width: 100%; /* 最好加上 定宽 取消自适应, 避免出现奇怪的现象 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.header {
+  width: 100%; /* 占据一整行, 取消自适应宽度 */
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* 垂直居中 */
+  justify-content: space-between; /* 分别处于两端 */
+  border-top: 1px solid #f5f5f5;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.episode {
+  margin-left: 20rpx;
+  margin-top: 4rpx;
+}
+
+.like {
+  margin-top: 6rpx;
+  width: 100rpx;
+
+}
+
+.navi {
+  position: absolute;
+  bottom: 40rpx;
+}
+.like-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 30rpx;
+}
+
+.share-btn {
+  /* margin-top: 10rpx; */
+  margin-left: 10rpx;
+}
+/* hack 方案, 暴力修改组件的 CSS 显示
+.share-btn > v-button > view {
+  width: 40rpx !important;
+} */
+
+.share {
+  width: 40rpx;
+  height: 40rpx;
+}

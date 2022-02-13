@@ -1,0 +1,12 @@
+<!--components/movie/index.wxml-->
+<!-- <text>components/movie/index.wxml</text> -->
+
+<view bindtap="onGoToDetail" class="container">
+  <image class="poster" src="{{movie.images.large}}"></image>
+  <text class="title">{{movie.title}}</text>
+  <!-- 评分组件 -->
+  <view class="rate-container">
+    <l-rate   disabled="{{true}}" score="{{movie.rating.stars / 10}}" size="22"></l-rate>
+    <text class="score">{{movie.rating.average}}</text>
+  </view>
+</view>

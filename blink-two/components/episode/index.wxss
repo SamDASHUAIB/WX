@@ -1,0 +1,47 @@
+/* 文字排版技巧很多 */
+/* 组件里面不要使用 id 选择器, 请使用 class 选择器 */
+.container {
+  height: 60rpx; /* 高度是由最大的字体决定的 */
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.index-container {
+  display: flex;
+  flex-direction: row;
+  /* 不同大小的文字, 底部是对齐的 No. 08 以及 | 底部是对齐的   */
+  align-items: baseline;
+}
+
+.plain {
+  font-size: 32rpx;
+}
+
+.index {
+  font-size: 60rpx; /* 最大的字体 */
+  /* fz === lh 上下没有空白 */
+  line-height: 60rpx;
+  font-weight: 800;
+  margin-right: 14rpx;
+}
+
+.line {
+  height: 44rpx;
+  margin-right: 14rpx;
+  border-left: 1px solid black; /* 边框模拟竖线 */
+}
+
+.date-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 6rpx;
+}
+
+.month {
+  font-size: 24rpx;
+  line-height: 24rpx; /* lh === fz 上下没有空白 */
+}
+
+.year {
+  font-size: 20rpx;
+}

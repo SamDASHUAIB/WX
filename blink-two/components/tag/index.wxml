@@ -1,0 +1,7 @@
+<view bind:tap="onTap" class="container tag-class">
+  <text>{{ text }}</text>
+  <slot name="after"></slot>
+</view>
+<!--
+  外部样式(后, 不一定能够成功覆盖) => 普通样式
+ -->

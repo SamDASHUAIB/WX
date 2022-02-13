@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30rpx 28rpx;
+  justify-content: space-between;
+}
+
+.movie {
+  /*由于设置了 flex 布局, 所以普通的 class 在自定义组件上就生效了, 无需外部样式类*/
+  margin-bottom: 30rpx;
+}

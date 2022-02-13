@@ -1,0 +1,106 @@
+<wxs src="../../utils/filter.wxs" module="util" />
+<view class="container">
+  <view class="head">
+    <image src="{{ book.image }}"></image>
+    <text class="title">{{ book.title }}</text>
+    <text class="author">{{ book.author }}</text>
+  </view>
+  <view class="sub-container">
+    <text class="headline">短评</text>
+    <text wx:if="{{(comments.length === 0)}}" class="shadow">还没有短评</text>
+    <view class="comment-container">
+      <block wx:for="{{ util.limit(comments, 10) }}" wx:key="content">
+        <v-tag
+          tag-class="{{util.addExternalClass(index)}}"
+          text="{{ item.content}}"
+        >
+          <!-- slot 属性名 val 具名 slot -->
+          <text class="num" slot="after">{{ '+' + item.nums }}</text>
+        </v-tag>
+      </block>
+    </view>
+  </view>
+  <view class="sub-container">
+    <text class="headline">内容简介</text>
+    <!--
+      util.format 将会执行两次,
+      book.summary 初始化 + setData
+      ** 初始化 book => null (summary 为 undefined) 造成 util.format 为 undefined **
+      setData book => Object(有了值)
+    -->
+    <text decode="{{true}}" class="content">{{ util.format(book.summary) }}</text>
+  </view>
+  <view class="sub-container">
+    <text class="headline">书本信息</text>
+    <view class="detail-container">
+      <view class="vertical description">
+        <text>出版社</text>
+        <text>出版年</text>
+        <text>页数</text>
+        <text>定价</text>
+        <text>装帧</text>
+      </view>
+      <view class="vertical">
+        <text>{{book.publisher}}</text>
+        <text>{{book.pubdate}}</text>
+        <text>{{book.pages}}</text>
+        <text>{{book.price}}</text>
+        <text>{{book.binding}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 假输入框 -->
+<view wx:if="{{!posting}}"  class="post-container">
+  <view bind:tap="onFakePost" class="post-fake">
+    <text>输入短评</text>
+  </view>
+  <view class="like-container">
+    <v-like
+      bind:like="onLike"
+      like="{{ likeStatus }}"
+      count="{{ likeCount }}"
+      class="like"
+    ></v-like>
+  </view>
+</view>
+<!-- 真输入框 -->
+<view wx:if="{{posting}}" class="posting-container">
+  <view class="post-header">
+    <text wx:if="{{!(comments.length === 0)}}" >仅可点击标签+1</text>
+    <text wx:else >暂无短评</text>
+    <text bind:tap="onCancel" class="cancel">取消</text>
+  </view>
+  <view class="comment-container">
+    <block wx:for="{{ util.limit(comments, 3) }}" wx:key="content">
+      <v-tag
+        bind:tapping="onPost"
+        tag-class="{{util.addExternalClass(index)}}"
+        text="{{ item.content}}"
+      >
+        <text class="num" slot="after">{{ '+' + item.nums }}</text>
+      </v-tag>
+    </block>
+  </view>
+  <input
+    bind:confirm="onPost"
+    class="post"
+    placeholder="短评最多12个字"></input>
+</view>
+<v-mask bind:tap="onClose" wx:if="{{posting}}"></v-mask>
+
+
+<!--
+      text
+      本身具有将 \n 解析成 "换行" 的能力
+
+      同时 不要在 text 中随意增加换行, text 会解析此换行
+      小程序认为一个 text 就是一个段落(p 标签)
+
+      decode 属性可以解析类似 &nbsp; 这样的转义字符
+     -->
+     <!--
+      text:
+      服务器返回的原始数据 \n => 换行
+      服务器返回的原始数据 \\n => 第二个反斜杠被转义了 \n (n 是独立的字母, 不会和 \n 一起组成一个 "换行")
+    -->

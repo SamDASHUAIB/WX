@@ -1,0 +1,25 @@
+.classic-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.classic-img {
+  width: 750rpx;
+  height: 500rpx;
+}
+
+.tag {
+  width: 46rpx;
+  height: 142rpx;
+  /* 相对于当前位置偏移  */
+  position: relative;
+  right: 310rpx;
+  bottom: 58rpx;
+}
+
+.content {
+  font-size: 36rpx;
+  max-width: 550rpx; /* 文本换行, 最大宽度范围内自适应宽度 */
+
+}

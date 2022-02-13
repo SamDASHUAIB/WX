@@ -1,0 +1,83 @@
+/* components/post/index.wxss */
+/* pages/posts/posts.wxss */
+
+
+/* 文章部分 */
+.post-container {
+  display: flex;
+  /* 垂直分布 */
+  flex-direction: column;
+  margin-top: 20rpx;
+  margin-bottom: 40rpx;
+  border-top: 1px solid #ededed;
+  border-bottom: 1px solid #ededed;
+  padding-bottom: 10rpx;
+}
+
+.post-author-date {
+  /* 使用 flex 实现子元素居中 */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10rpx 0 20rpx 10rpx;
+
+}
+
+.post-author {
+  width: 60rpx;
+  height: 60rpx;
+  /* 文本与图片居中对齐 */
+  /* vertical-align: middle; */
+}
+
+.post-date {
+  margin-left: 20rpx;
+  font-size: 26rpx;
+
+  /* 文本与图片居中对齐 */
+  /* vertical-align: middle; */
+}
+
+.post-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  margin-bottom: 20rpx;
+  margin-left: 20rpx;
+  color: #333333;
+}
+
+.post-image {
+  width: 100%;
+  /* 全屏 */
+  height: 340rpx;
+  margin-bottom: 30rpx;
+}
+
+.post-content {
+  color: #666666;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+  margin-left: 20rpx;
+  letter-spacing: 2rpx;
+  line-height: 40rpx;
+}
+
+.post-like {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 20rpx;
+
+}
+
+.post-like-image {
+  /* 使用字体图标 icon 后不需要设置了 */
+  /* width: 32rpx;
+  height: 32rpx; */
+  margin-right: 16rpx;
+}
+
+.post-like-font {
+  margin-right: 40rpx;
+  font-size: 26rpx;
+}

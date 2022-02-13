@@ -1,0 +1,9 @@
+<view class="container">
+  <!--  <image class="user-avatar" src="../../images/avatar/1.png"></image>-->
+  <l-avatar size="200" l-class="avatar" open-data="{{['userAvatarUrl']}}"/>
+  <text class="motto">Hello, Sam</text>
+  <!--  一般使用 bind 就行-->
+  <view bind:tap="onTap" class="journey-container">
+    <text class="journey">开启小程序之旅</text>
+  </view>
+</view>

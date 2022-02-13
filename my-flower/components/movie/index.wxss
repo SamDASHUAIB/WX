@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 200rpx;
+}
+
+.post {
+  width: 100%;
+  height: 270rpx;
+  margin-bottom: 22rpx;
+}
+
+.title {
+  /*单行文本省略需要限定宽度*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+}
+
+.rate-container {
+  margin-top: 6rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.score {
+  font-size: 24rpx;
+}

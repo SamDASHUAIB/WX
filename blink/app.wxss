@@ -1,0 +1,18 @@
+/**app.wxss**/
+/* .container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} */
+
+/* 只有很少的全局样式都能被组件 component 所继承 font- color */
+/* 几乎所有的组件都能被 page 页面所继承 */
+page {
+  /* page 每一个页面的最外层的元素 */
+  font-family: "PinFangSC-Thin";
+  font-size: 32rpx;
+}

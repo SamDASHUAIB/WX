@@ -1,0 +1,42 @@
+<wxs src="../../wxs/price.wxs" module="p"></wxs>
+<view
+    data-pid="{{data.id}}"
+    bind:tap="onItemTap"
+    class="container">
+<!--  利用 bind:load 动态计算图片宽高(固定宽度, 等比例缩放高度)-->
+  <image
+      style="width:{{width}}rpx;height:{{height}}rpx"
+      bind:load="onImgLoad"
+      src="{{data.img}}"></image>
+  <view class="content-container">
+    <text class="title">{{data.title}}</text>
+    <view class="tags">
+      <!--      Ins$复古流行 我们需要按 $ 截取, 拆分成数组-->
+      <block wx:for="{{tags}}">
+        <l-tag
+            size="super-mini"
+            l-class="l-tag">
+          {{item}}
+        </l-tag>
+      </block>
+    </view>
+    <!--    原价 折扣价-->
+    <view class="price-row">
+      <l-price
+          color="#157658"
+          value-size="28"
+          unit-size="20"
+          autofix
+          value="{{p.mainPrice(data.price, data.discount_price).price}}"></l-price>
+      <l-price
+          class="discount-price"
+          color="#999999"
+          value-size="26"
+          unit-size="20"
+          wx:if="{{p.slashedPrice(data.price, data.discount_price).display}}"
+          deleted
+          value="{{p.slashedPrice(data.price, data.discount_price).price}}"></l-price>
+    </view>
+    <text class="subtitle">{{data.subtitle}}</text>
+  </view>
+</view>

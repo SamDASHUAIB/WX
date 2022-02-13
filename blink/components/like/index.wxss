@@ -1,0 +1,28 @@
+/* components/like/index.wxss */
+.container {
+  display: inline-flex; /* 消除容器的块状特性(占据一整行), 自适应宽度, 数字需要动态变化, 因此不能定宽, 只能使用自适应宽度 */
+  flex-direction: row;
+  padding-top: 10rpx; /* 给一个 height 或者 padding-top 可以防止数字被截成一半(被截断, 主要就是因为 height 不够) */
+  width: 90rpx;
+
+}
+
+.container image {
+  /* 设计师以 iPhone 6 为标准 750 1334 我们直接可以用 rpx */
+  /* dpr 屏幕像素比为 2 倍的时候, 我们可以直接使用图片的尺寸 + rpx 单位, 不用转换 */
+  /* 自适应单位 rpx, px 固定单位 */
+  /* 绝大多数的时候, 使用 rpx , boder 使用 px */
+  /* 对于 image 我们应该设置 width 以及 height 不设置的话, 小程序会给一个默认的高宽 */
+  width: 32rpx;
+  height: 28rpx;
+}
+
+.container text {
+  font-size: 24rpx;
+  line-height: 24rpx; /* 消除文字上下的空隙 lh 和 fz 相等的话, 组件内部要消除无意义的空白 */
+  color: #bbbbbb;
+  position: relative;
+  bottom: 10rpx;
+  left: 10rpx;
+  /* padding-right: 80rpx; */
+}

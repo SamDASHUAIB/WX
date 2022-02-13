@@ -1,0 +1,14 @@
+<!--
+  外部样式不一定能覆盖内部样式, 不确定!
+tag-class 是一个外部样式类
+我们希望 tag-class 可以覆盖组件默认的样式 container
+但是现有的小程序的 externalClasses 无法保证, 所以我们要在
+外部样式类的 css 规则中添加 !important
+ -->
+<view bind:tap="onTap" class="container tag-class">
+  <text>{{text}}</text>
+  <!-- 灵活性, 自定义 -->
+  <!-- 默认没有启用 slot 需要在 index.js 中开启 -->
+  <!-- 插槽, 传递 标签。 -->
+  <slot name="after"></slot>
+</view>

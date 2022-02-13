@@ -1,0 +1,26 @@
+<view class="container">
+  <!--自定义组件, 需要使用外部样式类, -->
+  <l-grid l-class="inner-container">
+    <block wx:for="{{grid}}">
+      <l-grid-item key="{{index}}"
+                   slot="{{index}}">
+        <view class="grid-item">
+          <image class="img" src="{{item.img}}"></image>
+          <text class="text">{{item.title}}</text>
+        </view>
+      </l-grid-item>
+    </block>
+  </l-grid>
+</view>
+    <!--
+    组件驱动的意义
+        样式 骨架 业务逻辑/行为
+        
+        组件设计
+        没有特定原因, 不要固定 宽, 高
+        
+        灵活性
+        外部样式类 => css
+        slot 插槽 => html
+        业务逻辑 自定义属性, 自定义事件, 传参(路由) behavior => js
+    -->

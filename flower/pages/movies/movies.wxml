@@ -1,0 +1,28 @@
+<!--pages/movies/movies.wxml-->
+<!-- <text>pages/movies/movies.wxml</text> -->
+<!-- 
+  自定义组件 比页面的粒度要小
+  从服务器加载数据
+ -->
+<!-- class 不能生效, 使用外部样式类 f-class 有时候组件不知道自己究竟应该如何展示，所以把定制自己的权利交给使用组件的页面，页面通过外部样式类来排版多个组件 -->
+
+<!-- 搜索栏 -->
+<view class="container">
+  <l-search-bar bind:lincancel="onSearchCancel"	 bind:linconfirm="onConfirm" l-class="ex-search-bar" placeholder="盗梦空间"
+    bg-color="#f2f2f2"></l-search-bar>
+  <view wx:if="{{!searchResult}}">
+    <movie-list data-type="in_theaters" bindtap="onGoToMore" movies="{{inTheaters}}" title="正在热映" f-class="movie-list">
+    </movie-list>
+    <movie-list data-type="coming_soon" bindtap="onGoToMore" movies="{{comingSoon}}" title="即将上映" f-class="movie-list">
+    </movie-list>
+    <movie-list data-type="top250" bindtap="onGoToMore" movies="{{top250}}" title="豆瓣Top250" f-class="movie-list">
+    </movie-list>
+  </view>
+  <view class="search-container" wx:else>
+    <!-- 搜索结果 -->
+    <block wx:for="{{searchData}}" wx:key="index">
+      <!-- flex 布局可以使用普通的 class 无需使用外部样式类 -->
+      <movie class="movie" movie="{{item}}"></movie>
+    </block>
+  </view>
+</view>

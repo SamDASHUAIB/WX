@@ -1,0 +1,15 @@
+<!--components/movie-list/index.wxml-->
+<!-- <text>components/movie-list/index.wxml</text> -->
+<view class="container f-class">
+  <view class="title-container">
+    <text>{{title}}</text>
+    <text class="more-text">更多 ></text>
+  </view>
+  <!-- 结构相同, 样式相同, 数据不同 => 抽为组件 -->
+  <view class="movie-container">
+    <block wx:for="{{movies}}" wx:key="index">
+      <movie movie="{{item}}"></movie>
+    </block>
+
+  </view>
+</view>

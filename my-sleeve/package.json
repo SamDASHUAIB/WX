@@ -1,0 +1,14 @@
+{
+  "name": "my-sleeve",
+  "version": "1.0.0",
+  "description": "风袖电商小程序",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sam",
+  "license": "ISC",
+  "dependencies": {
+    "lin-ui": "^0.9.4"
+  }
+}

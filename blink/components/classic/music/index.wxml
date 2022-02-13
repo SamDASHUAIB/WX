@@ -1,0 +1,9 @@
+<view class="container">
+  <!-- 大图, 需要从服务器中取到 -->
+  <image class="classic-img  {{playing ? 'rotation' : ''}}" src="{{img}}"></image>
+  <image class="player-img" bind:tap="onPlay"
+    src="{{!playing ? playSrc : pauseSrc}}"></image>
+  <!-- type 图, 固定 -->
+  <image class="tag" src="./images/music@tag.png"></image>
+  <text class="content">{{content}}</text>
+</view>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "posts": "/components/post/index"
+  },
+  "navigationBarTitleText": "文 与 字"
+}

@@ -1,0 +1,7 @@
+<view class="container">
+  <!-- 监听用户点击左边按钮, 使用自定义事件告诉页面 -->
+  <image bind:tap="onLeft" class="icon" src="{{latest? disLeftSrc : leftSrc}}"></image>
+  <text class="title">{{title}}</text>
+  <!-- 监听用户点击右边按钮, 使用自定义事件告诉页面 -->
+  <image bind:tap="onRight" class="icon" src="{{first? disRightSrc : rightSrc}}"></image>
+</view>

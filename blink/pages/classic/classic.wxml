@@ -1,0 +1,34 @@
+<!-- 通过自定义属性(也就是组件中的 properties), 将数据 页面 => 组件 完成数据动态渲染 -->
+<view class="container">
+  <view class="header">
+    <v-episode index="{{classic.index}}"></v-episode>
+    <view class="like-container">
+      <!-- bind:like 监听 like 自定义事件 -->
+      <v-like class="like" bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}">
+      </v-like>
+      <!-- <v-button class="share-btn" open-type="share">
+        <image class="share" slot="img" src="/images/icon/share.png" />
+      </v-button> -->
+      <!-- UI 库来说, 优先使用外部样式类, 且添加上 !important -->
+      <l-button l-class="share-btn" special open-type="share">
+        <image class="share" src="/images/icon/share.png" />
+      </l-button>
+    </view>
+
+  </view>
+  <!-- 电影 -->
+  <!-- hidden VS wx:if
+    隐藏 DOM VS 重新渲染 DOM
+    hidden 初始化消耗大, 适用于频繁切换
+    wx:if 切换消耗大, 适用于不怎么切换的场景
+
+    hidden 不能被生命周期函数所使用!
+   -->
+  <v-movie hidden="{{classic.type !== 100}}" img="{{classic.image}}" content="{{classic.content}}"></v-movie>
+  <!-- 音乐 -->
+  <v-music src="{{classic.url}}" title="{{classic.title}}" wx:if="{{classic.type === 200}}" img="{{classic.image}}" content="{{classic.content}}"></v-music>
+  <!-- 句子 -->
+  <v-essay hidden="{{classic.type !== 300}}" img="{{classic.image}}" content="{{classic.content}}"></v-essay>
+  <!-- 只有组件知道用户点击的是 左箭头还是右箭头, 所以此处 bind:tap 是没有用的, 只知道用户 tap 了, 但是不知道用户 tap 的是左箭头还是右箭头 -->
+  <v-navi bind:left="onNext" bind:right="onPrevious" title="{{classic.title}}" first="{{first}}" latest="{{latest}}" class="navi"></v-navi>
+</view>

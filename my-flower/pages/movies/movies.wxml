@@ -1,0 +1,24 @@
+<!--自定义组件上的 class 没有生效, 需要使用外部样式类-->
+    <!--使用 data- 自定义属性, 将 type="xxx" 传递到事件监听对象 event 中-->
+<l-search-bar
+    bind:linconfirm="onConfirm"
+    bind:lincancel="onSearchCancel"
+    l-class="ex-search-bar"
+    placeholder="盗梦空间"></l-search-bar>
+<view wx:if="{{!searchResult}}">
+  <movie-list
+      data-type="in_theaters"
+      bind:tap="onGoToMore"
+      movies="{{inTheaters}}" title="正在热映" f-class="movie-list"></movie-list>
+  <movie-list
+      data-type="coming_soon"
+      bind:tap="onGoToMore" movies="{{comingSoon}}" title="即将上映" f-class="movie-list"></movie-list>
+  <movie-list
+      data-type="top250"
+      bind:tap="onGoToMore" movies="{{top250}}" title="豆瓣Top250" f-class="movie-list"></movie-list>
+</view>
+<view class="search-container" wx:else>
+  <block wx:for="{{searchData}}" wx:key="index">
+    <movie class="movie" movie="{{item}}"></movie>
+  </block>
+</view>

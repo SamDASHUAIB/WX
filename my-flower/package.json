@@ -1,0 +1,14 @@
+{
+  "name": "my-flower",
+  "version": "1.0.0",
+  "description": "开启小程序之旅",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sam",
+  "license": "ISC",
+  "dependencies": {
+    "lin-ui": "^0.9.4"
+  }
+}
